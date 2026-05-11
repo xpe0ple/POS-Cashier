@@ -52,7 +52,7 @@
 
             <!-- STOCK -->
             <div>
-                <label class="block text-sm text-gray-400 mb-1">Stock</label>
+                <label class="block text-sm text-gray-400 mb-1">Stok</label>
                 <input type="number" name="stock" value="{{ old('stock', $product->stock) }}"
                     class="w-full px-4 py-2 rounded-xl bg-gray-800 border border-gray-600 
                            focus:ring-2 focus:ring-purple-500 focus:outline-none text-white">

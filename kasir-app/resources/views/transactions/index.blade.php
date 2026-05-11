@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Transaction History</title>
+    <title>Riwayat Transaksi</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -20,13 +20,12 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
             d="M15 19l-7-7 7-7" />
     </svg>
-
-    Back to Cashier
+    Kembali ke Kasir
 </a>
 
     <!-- TITLE -->
-    <h1 class="text-2xl font-bold">Transaction History</h1>
-    <p class="text-gray-500 mb-6">View all past transactions and receipts</p>
+    <h1 class="text-2xl font-bold">Riwayat Transaksi</h1>
+    <p class="text-gray-500 mb-6">Lihat seluruh riwayat transaksi dan struk</p>
 
     <!-- LIST -->
     <div class="space-y-4">
@@ -39,22 +38,22 @@
 
     <!-- ID -->
     <div>
-        <p class="text-sm text-gray-500">Transaction ID</p>
+        <p class="text-sm text-gray-500">ID Transaksi</p>
         <p class="font-medium">txn-{{ str_pad($t->transaction_id, 3, '0', STR_PAD_LEFT) }}</p>
     </div>
 
     <!-- DATE -->
     <div>
-        <p class="text-sm text-gray-500">Date & Time</p>
+        <p class="text-sm text-gray-500">Tanggal & Waktu</p>
         <p class="font-medium">
-            {{ $t->created_at->format('M d, Y, h:i A') }}
+            {{ $t->created_at->translatedFormat('d F Y, H:i') }}
         </p>
     </div>
 
     <!-- ITEMS -->
     <div>
-        <p class="text-sm text-gray-500">Items</p>
-        <p class="font-medium">{{ $t->items->count() }} items</p>
+        <p class="text-sm text-gray-500">Produk</p>
+        <p class="font-medium">{{ $t->items->count() }} produk</p>
     </div>
 
     <!-- EVENT 🔥 -->
@@ -82,7 +81,7 @@
 
                 <button onclick="openReceipt({{ $t->transaction_id }})""
                     class="mt-2 px-4 py-1 border rounded-lg text-sm hover:bg-gray-100">
-                    View Receipt
+                    Lihat Struk
                 </button>
 
             </div>
@@ -97,12 +96,12 @@
     <div class="bg-white w-full max-w-[500px] rounded-2xl p-6 shadow-lg max-h-[90vh] overflow-y-auto">
 
         <div class="flex justify-between mb-4">
-            <h2 class="font-semibold">Receipt</h2>
+            <h2 class="font-semibold">Struk</h2>
             <button onclick="closeReceipt()">✖</button>
         </div>
 
         <div class="text-center mb-4">
-            <h1 class="text-xl font-bold">RECEIPT</h1>
+            <h1 class="text-xl font-bold">STRUK</h1>
             <p id="receipt-date" class="text-sm text-gray-500"></p>
         </div>
 
@@ -131,30 +130,30 @@
         <!-- PAYMENT -->
         <div class="text-sm space-y-1">
             <div class="flex justify-between">
-                <span>Payment Method</span>
+                <span>Metode Pembayaran</span>
                 <span id="receipt-method"></span>
             </div>
 
             <div class="flex justify-between">
-                <span>Amount Paid</span>
+                <span>Uang Dibayar</span>
                 <span id="receipt-paid"></span>
             </div>
 
             <div class="flex justify-between text-green-600 font-semibold">
-                <span>Change</span>
+                <span>Kembalian</span>
                 <span id="receipt-change"></span>
             </div>
         </div>
 
         <div class="text-center text-xs text-gray-400 mt-4">
-            Thank you for your purchase!
+            Terima kasih telah berbelanja!
         </div>
 
         <!-- BUTTON -->
         <div class="flex gap-2 mt-6">
             <button onclick="closeReceipt()" 
                 class="flex-1 bg-blue-600 text-white rounded-xl py-2 hover:bg-blue-700">
-                Done
+                Selesai
             </button>
         </div>
 
@@ -202,11 +201,19 @@
             document.getElementById('receipt-total').innerText = formatRupiah(data.total);
     
             document.getElementById('receipt-method').innerText = data.payment_method.toUpperCase();
-            document.getElementById('receipt-paid').innerText = formatRupiah(data.total);
-            document.getElementById('receipt-change').innerText = formatRupiah(0);
+
+            document.getElementById('receipt-paid').innerText = formatRupiah(data.amount_paid ?? data.total);
+
+            document.getElementById('receipt-change').innerText = formatRupiah(data.change ?? 0);
     
-            document.getElementById('receipt-date').innerText = 
-                new Date(data.created_at).toLocaleString();
+            document.getElementById('receipt-date').innerText =
+    new Date(data.created_at).toLocaleString('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
         }
     
         function closeReceipt() {

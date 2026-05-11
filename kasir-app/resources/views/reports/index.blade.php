@@ -7,7 +7,7 @@
     <!-- HEADER + FILTER -->
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
         <div>
-            <h1 class="text-2xl font-bold">Reports Per Event</h1>
+            <h1 class="text-2xl font-bold">Laporan Per Event</h1>
             <p class="text-gray-400 text-sm">Insight penjualan berdasarkan event</p>
         </div>
 

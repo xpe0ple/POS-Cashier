@@ -54,8 +54,6 @@
         </form>
     </div>
 
-
-
     <!-- SUMMARY -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
 
@@ -88,6 +86,463 @@
         </div>
 
     </div>
+
+    <!-- STEP 1 -->
+<div class="bg-gray-800 rounded overflow-hidden">
+    <div class="p-4 border-b border-gray-700">
+        <h2 class="font-semibold text-lg">
+            Step 1 - Matriks Keputusan
+        </h2>
+    </div>
+
+    <table class="w-full text-sm">
+        <thead class="bg-gray-700">
+            <tr>
+                <th class="p-3">Kode</th>
+                <th class="p-3">Menu</th>
+                <th class="p-3">C1</th>
+                <th class="p-3">C2</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($stepData as $d)
+            <tr class="border-t border-gray-700">
+                <td class="p-3">{{ $d['kode'] }}</td>
+                <td class="p-3">{{ $d['name'] }}</td>
+                <td class="p-3 text-center">{{ $d['c1'] }}</td>
+                <td class="p-3 text-center">
+                    Rp {{ number_format($d['c2'],0,',','.') }}
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<!-- INTERVAL PENILAIAN -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <!-- C1 -->
+    <div class="bg-gray-800 rounded overflow-hidden">
+
+        <div class="p-4 border-b border-gray-700">
+            <h2 class="font-semibold text-lg">
+                Interval Penilaian C1 (Jumlah Terjual)
+            </h2>
+        </div>
+
+        <table class="w-full text-sm">
+            <thead class="bg-gray-700">
+                <tr>
+                    <th class="p-3">Interval</th>
+                    <th class="p-3 text-center">Nilai Likert</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if($eventId == 2)
+                    <!-- CFD -->
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">≤ 315</td>
+                        <td class="p-3 text-center">1</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">316 - 390</td>
+                        <td class="p-3 text-center">2</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">391 - 465</td>
+                        <td class="p-3 text-center">3</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">466 - 540</td>
+                        <td class="p-3 text-center">4</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">> 540</td>
+                        <td class="p-3 text-center">5</td>
+                    </tr>
+
+                @elseif($eventId == 3)
+                    <!-- TAPOS -->
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">≤ 471</td>
+                        <td class="p-3 text-center">1</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">472 - 550</td>
+                        <td class="p-3 text-center">2</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">551 - 629</td>
+                        <td class="p-3 text-center">3</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">630 - 708</td>
+                        <td class="p-3 text-center">4</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">> 708</td>
+                        <td class="p-3 text-center">5</td>
+                    </tr>
+
+                @else
+                    <!-- ALUN-ALUN -->
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">≤ 440</td>
+                        <td class="p-3 text-center">1</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">441 - 490</td>
+                        <td class="p-3 text-center">2</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">491 - 540</td>
+                        <td class="p-3 text-center">3</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">541 - 590</td>
+                        <td class="p-3 text-center">4</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">> 590</td>
+                        <td class="p-3 text-center">5</td>
+                    </tr>
+                @endif
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- C2 -->
+    <div class="bg-gray-800 rounded overflow-hidden">
+
+        <div class="p-4 border-b border-gray-700">
+            <h2 class="font-semibold text-lg">
+                Interval Penilaian C2 (Revenue)
+            </h2>
+        </div>
+
+        <table class="w-full text-sm">
+            <thead class="bg-gray-700">
+                <tr>
+                    <th class="p-3">Interval</th>
+                    <th class="p-3 text-center">Nilai Likert</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @if($eventId == 2)
+                    <!-- CFD -->
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">≤ 12.000.000</td>
+                        <td class="p-3 text-center">1</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">13jt - 16jt</td>
+                        <td class="p-3 text-center">2</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">17jt - 20jt</td>
+                        <td class="p-3 text-center">3</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">21jt - 24jt</td>
+                        <td class="p-3 text-center">4</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">> 24jt</td>
+                        <td class="p-3 text-center">5</td>
+                    </tr>
+
+                @elseif($eventId == 3)
+                    <!-- TAPOS -->
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">≤ 16.500.000</td>
+                        <td class="p-3 text-center">1</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">17jt - 20jt</td>
+                        <td class="p-3 text-center">2</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">21jt - 23jt</td>
+                        <td class="p-3 text-center">3</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">24jt - 27jt</td>
+                        <td class="p-3 text-center">4</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">> 27jt</td>
+                        <td class="p-3 text-center">5</td>
+                    </tr>
+
+                @else
+                    <!-- ALUN-ALUN -->
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">≤ 14.000.000</td>
+                        <td class="p-3 text-center">1</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">15jt - 18jt</td>
+                        <td class="p-3 text-center">2</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">19jt - 20jt</td>
+                        <td class="p-3 text-center">3</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">21jt - 22jt</td>
+                        <td class="p-3 text-center">4</td>
+                    </tr>
+
+                    <tr class="border-t border-gray-700">
+                        <td class="p-3">> 22jt</td>
+                        <td class="p-3 text-center">5</td>
+                    </tr>
+                @endif
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div class="bg-yellow-500/10 border border-yellow-500/30 p-4 rounded-xl text-sm">
+    <p class="font-semibold mb-2">
+        Konversi Skala Likert
+    </p>
+
+    <ul class="space-y-1 text-gray-300">
+        <li>1 = Sangat Rendah</li>
+        <li>2 = Rendah</li>
+        <li>3 = Cukup</li>
+        <li>4 = Tinggi</li>
+        <li>5 = Sangat Tinggi</li>
+    </ul>
+</div>
+
+<!-- STEP 2 -->
+<div class="bg-gray-800 rounded overflow-hidden">
+    <div class="p-4 border-b border-gray-700">
+        <h2 class="font-semibold text-lg">
+            Step 2 - Rating Kecocokan
+        </h2>
+    </div>
+
+    <table class="w-full text-sm">
+        <thead class="bg-gray-700">
+            <tr>
+                <th class="p-3">Kode</th>
+                <th class="p-3">Menu</th>
+                <th class="p-3">Score C1</th>
+                <th class="p-3">Score C2</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($stepData as $d)
+            <tr class="border-t border-gray-700">
+                <td class="p-3">{{ $d['kode'] }}</td>
+                <td class="p-3">{{ $d['name'] }}</td>
+                <td class="p-3 text-center">{{ $d['score_c1'] }}</td>
+                <td class="p-3 text-center">{{ $d['score_c2'] }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<!-- STEP 3 -->
+<div class="bg-gray-800 rounded overflow-hidden">
+    <div class="p-4 border-b border-gray-700">
+        <h2 class="font-semibold text-lg">
+            Step 3 - Normalisasi
+        </h2>
+        <div class="bg-blue-500/10 border border-blue-500/20 
+        px-3 py-2 rounded-lg mt-2 text-sm text-blue-300 inline-block">
+        Rij = Xij / Max(Xij)
+        </div>
+    </div>
+
+    <table class="w-full text-sm">
+        <thead class="bg-gray-700">
+            <tr>
+                <th class="p-3">Kode</th>
+                <th class="p-3">N1</th>
+                <th class="p-3">N2</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($stepData as $d)
+            <tr class="border-t border-gray-700">
+                <td class="p-3">{{ $d['kode'] }}</td>
+                <td class="p-3 text-center">
+                    {{ number_format($d['n1'],3) }}
+                </td>
+                <td class="p-3 text-center">
+                    {{ number_format($d['n2'],3) }}
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<!-- STEP 4 -->
+<div class="bg-gray-800 rounded overflow-hidden">
+
+    <div class="p-4 border-b border-gray-700">
+        <h2 class="font-semibold text-lg">
+            Step 4 - Perhitungan WSM
+        </h2>
+        <div class="bg-blue-500/10 border border-blue-500/20 
+            px-3 py-2 rounded-lg mt-2 text-sm text-blue-300 inline-block">
+            WSM = Σ(Xij × Wj)
+        </div>
+    </div>
+
+    <table class="w-full text-sm">
+
+        <thead class="bg-gray-700">
+            <tr>
+                <th class="p-3">Kode</th>
+                <th class="p-3">Menu</th>
+                <th class="p-3 text-center">WSM</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($stepData as $d)
+            <tr class="border-t border-gray-700">
+
+                <td class="p-3">{{ $d['kode'] }}</td>
+
+                <td class="p-3">{{ $d['name'] }}</td>
+
+                <td class="p-3 text-center">
+                    {{ number_format($d['wsm'],3) }}
+                </td>
+
+            </tr>
+            @endforeach
+        </tbody>
+
+    </table>
+</div>
+
+<!-- STEP 5 -->
+<div class="bg-gray-800 rounded overflow-hidden">
+
+    <div class="p-4 border-b border-gray-700">
+        <h2 class="font-semibold text-lg">
+            Step 5 - Perhitungan WPM
+        </h2>
+        <div class="bg-blue-500/10 border border-blue-500/20 
+        px-3 py-2 rounded-lg mt-2 text-sm text-blue-300 inline-block">
+        WPM = Π(Xij ^ Wj)
+        </div>
+
+    </div>
+
+    <table class="w-full text-sm">
+
+        <thead class="bg-gray-700">
+            <tr>
+                <th class="p-3">Kode</th>
+                <th class="p-3">Menu</th>
+                <th class="p-3 text-center">WPM</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($stepData as $d)
+            <tr class="border-t border-gray-700">
+
+                <td class="p-3">{{ $d['kode'] }}</td>
+
+                <td class="p-3">{{ $d['name'] }}</td>
+
+                <td class="p-3 text-center">
+                    {{ number_format($d['wpm'],3) }}
+                </td>
+
+            </tr>
+            @endforeach
+        </tbody>
+
+    </table>
+</div>
+
+<!-- STEP 6 -->
+<div class="bg-gray-800 rounded overflow-hidden">
+
+    <div class="p-4 border-b border-gray-700">
+        <h2 class="font-semibold text-lg">
+            Step 6 - Perhitungan Qi
+        </h2>
+        <div class="bg-blue-500/10 border border-blue-500/20 
+        px-3 py-2 rounded-lg mt-2 text-sm text-blue-300 inline-block">
+            Qi = 0.5(WSM) + 0.5(WPM)
+        </div>
+    </div>
+
+    <table class="w-full text-sm">
+
+        <thead class="bg-gray-700">
+            <tr>
+                <th class="p-3">Kode</th>
+                <th class="p-3">Menu</th>
+                <th class="p-3 text-center">Qi</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($stepData as $d)
+            <tr class="border-t border-gray-700">
+
+                <td class="p-3">{{ $d['kode'] }}</td>
+
+                <td class="p-3">{{ $d['name'] }}</td>
+
+                <td class="p-3 text-center font-bold text-green-400">
+                    {{ number_format($d['q'],3) }}
+                </td>
+
+            </tr>
+            @endforeach
+        </tbody>
+
+    </table>
+</div>
 
     <!-- TABLE -->
     <div class="bg-gray-800 rounded overflow-hidden">

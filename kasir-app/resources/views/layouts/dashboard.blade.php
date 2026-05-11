@@ -6,6 +6,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" type="image/png" 
+      href="{{ asset('logo.png') }}">
 </head>
 
 <body class="bg-[#0f172a] text-white">
@@ -46,7 +48,7 @@
                     {{ request()->is('products*') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : 'text-gray-400 hover:bg-gray-700' }}">
                     
                     <i data-lucide="box"></i>
-                    <span class="sidebar-text">Product</span>
+                    <span class="sidebar-text">Produk</span>
                 </a>
 
                 <a href="/events"
@@ -63,7 +65,7 @@
                     {{ request()->is('reports') ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white' : 'text-gray-400 hover:bg-gray-700' }}">
                     
                     <i data-lucide="bar-chart-3"></i>
-                    <span class="sidebar-text">Reports</span>
+                    <span class="sidebar-text">Laporan</span>
                 </a>
             
                 <!-- SPK -->
@@ -78,7 +80,7 @@
         </div>
 
         <div>
-            <p class="text-sm text-gray-400 sidebar-text">Logged in</p>
+            <p class="text-sm text-gray-400 sidebar-text">Sedang Aktif</p>
             <p class="font-semibold sidebar-text">{{ Auth::user()->name }}</p>
         
             <form method="POST" action="/logout" class="mt-4">
@@ -143,7 +145,7 @@
             </div>
             <div>
                 <h1 class="text-3xl font-bold">Dashboard</h1>
-                <p class="text-gray-400 text-sm text-center">Track your insights</p>
+                <p class="text-gray-400 text-sm text-center">Pantau Insight Bisnis Anda</p>
             </div>
 
             <div class="text-sm text-gray-400">

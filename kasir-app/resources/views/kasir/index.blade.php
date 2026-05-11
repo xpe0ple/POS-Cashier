@@ -14,12 +14,6 @@
 <body class="bg-gray-100 font-[Geist] m-0 p-0 flex flex-col h-screen overflow-hidden">
 <!-- Header -->
 <x-header :events="$events" />
-<form method="POST" action="/logout">
-    @csrf
-    <button class="text-red-500 hover:underline">
-        Logout
-    </button>
-</form>
 {{-- <div class="flex flex-1 overflow-hidden">
     @if(session('success'))
         <div class="bg-green-200 text-green-800 p-3 rounded-xl mb-4 w-full">
@@ -89,7 +83,7 @@
             <input 
                 type="text" 
                 id="search"
-                placeholder="Search products..."
+                placeholder="Cari Produk..."
                 onkeyup="searchProduct()"
                 class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-xl bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:bg-white transition"
             >
@@ -121,7 +115,7 @@
 
     <!-- 🛒 RIGHT: CART -->
     <div class="w-[350px] bg-white p-6 border-l flex flex-col">
-        <h1 class="text-xl font-semibold mb-4">Shopping Cart</h1>
+        <h1 class="text-xl font-semibold mb-4">Daftar Pesanan</h1>
 
         <div id="cart-items" class="flex-1 overflow-y-auto pr-2"></div>
 
@@ -142,7 +136,7 @@
         
         <button type="button" onclick=" openPayment() " 
             class="mt-4 w-full bg-blue-500 text-white py-2 rounded-xl hover:bg-blue-600 transition">
-            Checkout
+            Bayar
         </button>
     </div>
 
@@ -155,12 +149,12 @@
 
     <div class="bg-white w-full max-w-[500px] rounded-2xl p-6 shadow-lg">
         <div id="stock-alert" class="hidden bg-yellow-100 border border-yellow-300 text-yellow-800 p-3 rounded-xl mb-4 text-sm">
-            <p class="font-semibold mb-1">⚠️ Out of Stock Warning</p>
+            <p class="font-semibold mb-1">⚠️ Peringatan Stok Habis</p>
             <ul id="stock-list" class="list-disc ml-5"></ul>
             <p class="mt-2 text-xs">Silakan kurangi jumlah sebelum checkout.</p>
         </div>
         <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-semibold">Payment Details</h2>
+            <h2 class="text-xl font-semibold">Detail Pembayaran</h2>
             <button onclick="closeModal()">✖</button>
         </div>
     
@@ -188,12 +182,12 @@
     
         <!-- PAYMENT METHOD -->
         <div class="space-y-2 mb-4">
-            <button onclick="selectMethod('cash', event)" 
+            <button onclick="selectMethod('CASH', event)" 
                 class="method-btn w-full border p-3 rounded-xl text-sm font-medium hover:bg-blue-50 hover:border-blue-400 transition transition-all duration-200">
                     Cash
             </button>
 
-            <button onclick="selectMethod('qris', event)" 
+            <button onclick="selectMethod('QRIS', event)" 
                 class="method-btn w-full border p-3 rounded-xl text-sm font-medium hover:bg-blue-50 hover:border-blue-400 transition transition-all duration-200">
                     QRIS
             </button>
@@ -221,12 +215,12 @@
     
         <div class="flex gap-2">
             <button onclick="closeModal()" class="flex-1 border rounded-xl py-2">
-                Cancel
+                Batal
             </button>
     
             <button id="btn-checkout-final" 
             onclick="submitCheckout()" class="flex-1 bg-blue-500 text-white rounded-xl py-2">
-                Complete Payment
+            Selesaikan Pembayaran
             </button>
         </div>
     
@@ -239,12 +233,12 @@
     <div class="bg-white w-full max-w-[500px] rounded-2xl p-6 shadow-lg">
 
         <div class="flex justify-between mb-4">
-            <h2 class="font-semibold">Receipt</h2>
+            <h2 class="font-semibold">Struk</h2>
             <button onclick="closeReceipt()">✖</button>
         </div>
 
         <div class="text-center mb-4">
-            <h1 class="text-xl font-bold">RECEIPT</h1>
+            <h1 class="text-xl font-bold">STRUK</h1>
             <p class="text-sm text-gray-500" id="receipt-date"></p>
         </div>
 
@@ -273,23 +267,23 @@
         <!-- PAYMENT -->
         <div class="text-sm space-y-1">
             <div class="flex justify-between">
-                <span>Payment Method</span>
+                <span>Metode Pembayaran</span>
                 <span id="receipt-method"></span>
             </div>
 
             <div class="flex justify-between">
-                <span>Amount Paid</span>
+                <span>Uang Dibayar</span>
                 <span id="receipt-paid"></span>
             </div>
 
             <div class="flex justify-between text-green-600 font-semibold">
-                <span>Change</span>
+                <span>Kembalian</span>
                 <span id="receipt-change"></span>
             </div>
         </div>
 
         <div class="text-center text-xs text-gray-400 mt-4">
-            Thank you for your purchase!
+            Terima kasih telah berbelanja!
         </div>
         <div class="flex gap-2 mt-6">
 
@@ -324,7 +318,7 @@
             <!-- DONE -->
             <button onclick="closeReceipt()" 
                 class="flex-1 bg-blue-600 text-white rounded-xl py-2 text-sm font-medium hover:bg-blue-700 transition">
-                Done
+                Selesai
             </button>
         
         </div>

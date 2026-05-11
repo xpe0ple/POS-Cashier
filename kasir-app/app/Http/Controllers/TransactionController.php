@@ -20,9 +20,7 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::with('items.product', 'eventRel')
             ->where('transaction_id', $id)
-            ->firstOrFail()
-            ->latest()
-            ->get();
+            ->firstOrFail();
 
         return response()->json($transaction);
     }

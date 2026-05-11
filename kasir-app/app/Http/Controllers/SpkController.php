@@ -23,6 +23,7 @@ class SpkController extends Controller
     private function getScoreC2($value)
     {
         if ($value <= 14000000) return 1;
+
         elseif ($value <= 18000000) return 2;
         elseif ($value <= 20000000) return 3;
         elseif ($value <= 22000000) return 4;
@@ -235,7 +236,16 @@ class SpkController extends Controller
         }
 
         // =============================
-        // SORT RANKING
+        // SORT STEP DATA (A1-A6)
+        // =============================
+        $stepData = $data;
+
+        usort($stepData, function ($a, $b) {
+            return strcmp($a['kode'], $b['kode']);
+        });
+
+        // =============================
+        // SORT RANKING BERDASARKAN QI
         // =============================
         usort($data, function ($a, $b) {
             return $b['q'] <=> $a['q'];
@@ -243,6 +253,12 @@ class SpkController extends Controller
 
         $top = $data[0] ?? null;
 
-        return view('spk.index', compact('data', 'events', 'eventId', 'top'));
+        return view('spk.index', compact(
+            'data',
+            'stepData',
+            'events',
+            'eventId',
+            'top'
+        ));
     }
 }

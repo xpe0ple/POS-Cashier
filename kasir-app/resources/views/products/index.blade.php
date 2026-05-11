@@ -37,7 +37,7 @@
                 <tr>
                     <th class="p-3 text-left">Produk</th>
                     <th class="p-3 text-center">Harga</th>
-                    <th class="p-3 text-center">Stock</th>
+                    <th class="p-3 text-center">Stok</th>
                     <th class="p-3 text-center">Foto</th>
                     <th class="p-3 text-center">Aksi</th>
                 </tr>
