@@ -94,7 +94,8 @@
     </aside>
 
     <!-- MAIN -->
-    <main id="main-content" class="ml-64 flex-1 p-10 transition-all duration-300">
+    <main id="main-content"
+class="ml-64 w-[calc(100%-16rem)] p-6 transition-all duration-300 overflow-x-hidden">
 
         <!-- HEADER -->
         <div class="flex justify-between items-center mb-8">
@@ -203,6 +204,14 @@
 .collapsed .sidebar-text {
     display: none;
 }
+
+html, body {
+    overflow-x: hidden;
+}
+
+#main-content {
+    box-sizing: border-box;
+}
 </style>
 
 <!-- SCRIPT -->
@@ -216,9 +225,9 @@ function toggleSidebar() {
         // 🔽 COLLAPSE
         sidebar.classList.remove('w-64');
         sidebar.classList.add('w-20');
-
-        content.classList.remove('ml-64');
-        content.classList.add('ml-20');
+        
+        content.classList.remove('w-[calc(100%-16rem)]');
+        content.classList.add('w-[calc(100%-5rem)]');
 
         texts.forEach(el => el.classList.add('hidden'));
 
@@ -228,8 +237,8 @@ function toggleSidebar() {
         sidebar.classList.remove('w-20');
         sidebar.classList.add('w-64');
 
-        content.classList.remove('ml-20');
-        content.classList.add('ml-64');
+        content.classList.remove('w-[calc(100%-5rem)]');
+        content.classList.add('w-[calc(100%-16rem)]');
 
         texts.forEach(el => el.classList.remove('hidden'));
 

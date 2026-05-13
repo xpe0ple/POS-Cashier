@@ -283,27 +283,45 @@ const gradient = ctx.createLinearGradient(0, 0, 0, 300);
 gradient.addColorStop(0, 'rgba(59, 130, 246, 0.4)');
 gradient.addColorStop(1, 'rgba(59, 130, 246, 0.05)');
 
+Chart.defaults.elements.line.borderWidth = 3;
+Chart.defaults.elements.line.borderJoinStyle = 'round';
+
 new Chart(ctx, {
     type: 'line',
     data: {
         labels: data.map(d => d.date),
         datasets: [{
-            label: 'Penjualan',
-            data: data.map(d => d.total),
+    label: 'Penjualan',
+    data: data.map(d => d.total),
 
-            borderColor: '#3b82f6',
-            backgroundColor: gradient,
+    borderColor: '#60a5fa',
+    backgroundColor: gradient,
 
-            fill: true,
-            tension: 0.5,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            pointBackgroundColor: '#3b82f6'
-        }]
+    fill: true,
+    tension: 0.5,
+
+    pointRadius: 4,
+    pointHoverRadius: 8,
+
+    pointBackgroundColor: '#3b82f6',
+
+    pointHoverBorderWidth: 4,
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: '#3b82f6'
+}]
     },
     options: {
-        responsive: true,
-        maintainAspectRatio: false,
+    responsive: true,
+    maintainAspectRatio: false,
+
+    animation: {
+    duration: 2000,
+    easing: 'easeInOutQuart',
+
+    delay: (context) => {
+        return context.dataIndex * 300;
+    }
+},
 
         plugins: {
             legend: {
@@ -354,6 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
             labels: donutData.map(d => d.product?.name ?? 'Unknown'),
             datasets: [{
                 data: donutData.map(d => d.revenue),
+                hoverOffset: 18,
                 backgroundColor: [
                     '#10b981',
                     '#f59e0b',
@@ -365,13 +384,20 @@ document.addEventListener("DOMContentLoaded", function () {
             }]
         },
         options: {
-            cutout: '70%',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
-            }
-        }
+    cutout: '70%',
+    responsive: true,
+    maintainAspectRatio: false,
+
+    animation: {
+        animateRotate: true,
+        animateScale: true,
+        duration: 1800
+    },
+
+    plugins: {
+        legend: { display: false }
+    }
+}
     });
 
 });

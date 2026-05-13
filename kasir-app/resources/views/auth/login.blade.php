@@ -5,7 +5,7 @@
     <!-- HEADER -->
     <div class="text-center mb-6">
         <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-xl font-bold">
-            A
+            M
         </div>
 
         <h2 class="text-2xl font-bold text-white">Welcome</h2>

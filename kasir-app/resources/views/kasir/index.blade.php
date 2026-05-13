@@ -149,7 +149,7 @@
 
     <div class="bg-white w-full max-w-[500px] rounded-2xl p-6 shadow-lg">
         <div id="stock-alert" class="hidden bg-yellow-100 border border-yellow-300 text-yellow-800 p-3 rounded-xl mb-4 text-sm">
-            <p class="font-semibold mb-1">⚠️ Peringatan Stok Habis</p>
+            <p class="font-semibold mb-1">⚠️ Peringatan Stok Tidak Mencukupi</p>
             <ul id="stock-list" class="list-disc ml-5"></ul>
             <p class="mt-2 text-xs">Silakan kurangi jumlah sebelum checkout.</p>
         </div>
@@ -182,12 +182,12 @@
     
         <!-- PAYMENT METHOD -->
         <div class="space-y-2 mb-4">
-            <button onclick="selectMethod('CASH', event)" 
+            <button onclick="selectMethod('cash', event)" 
                 class="method-btn w-full border p-3 rounded-xl text-sm font-medium hover:bg-blue-50 hover:border-blue-400 transition transition-all duration-200">
                     Cash
             </button>
 
-            <button onclick="selectMethod('QRIS', event)" 
+            <button onclick="selectMethod('qris', event)" 
                 class="method-btn w-full border p-3 rounded-xl text-sm font-medium hover:bg-blue-50 hover:border-blue-400 transition transition-all duration-200">
                     QRIS
             </button>
